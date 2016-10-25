@@ -8,7 +8,7 @@ So you're done writing your code but there's still a lot of ... let's say 'post-
 
 * Remove ```console``` or ```debugger``` statements from your code.
 
-* And a bunch of other, repititive stuff that you have to do very often after you are done coding.
+* And a bunch of other, repetitive stuff that you have to do very often after you are done coding.
 
   ​
 
@@ -53,18 +53,32 @@ Next, add Gulp to your devDependencies by installing it as shown :
 $ npm install --save-dev gulp
 ``````
 
-Now, you need to create a file called  **`gulpfile.babel.js`** in the same directory.
+> **Note :** I'll be using ES6 to write the gulpfile so go ahead and install babel-core as a devDependency and with `es2015` as a preset so that your gulpfile runs without any issues (babel will transpile your gulpfile from ES6 to ES5).
 
 ``````
-$ your_text_editor gulpfile.js
+$ npm install --save-dev babel-core babel-preset-es2015
 ``````
+
+ Now, you need to create a file called  **`gulpfile.babel.js`** in the same directory.
+
+``````
+$ atom gulpfile.babel.js 
+(or)
+$ subl gulpfile.babel.js
+(or)
+$ emacs gulpfile.babel.js
+``````
+
+
 
 Once the file is open,  just add the following lines : 
 
 ```javascript
 const gulp = require('gulp')
 
-gulp.task('default', () => { /* code for your default task here */ })
+gulp.task('default', () => {
+  /* code for your default task here */ 
+})
 ```
 
 So, now that you have your GulpFile, you can play with it and see what you can do. 
