@@ -1,15 +1,20 @@
 const gulp = require('gulp')
 
+// introductory
 gulp.task('default', () => {
   console.log('Say Hi to Gulp !')
 })
 
-gulp.task('doThisNext', () => {
+gulp.task('doThisFirst', () => {
   console.log('minifying stuff')
 })
 
-gulp.task('doThisLast', () => {
+gulp.task('doThisNext', () => {
   console.log('Phew !! Finally Done !')
 })
 
 gulp.task('default', ['doThisFirst', 'doThisNext'])
+
+// using streams
+
+// gulp.src()
