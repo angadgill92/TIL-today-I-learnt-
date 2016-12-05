@@ -142,26 +142,53 @@ Functions are used to avoid redundancy in writing code. If you're writing the sa
 
 When using these, we `call`  these functions and `pass` certain `arguments` as the `parameters`.
 
-
+###### Rules for defining Functions
 
 ``````lisp
-;SYNTAX
+;FUNCTION DEFINITION SYNTAX
 
 (define (func_name param1 param2 ...)(
      func_body ))
+; The function body must always be on a new line.
 
 ;EXAMPLE
 
 (define (bulb color)
   (circle 40 "solid" c))
+
+;FUNCTION CALL SYNTAX
+
+(func_name expr1 expr2 ...)
+
+; The function name must be followed by expressions corresponding to the number of
+; parameters in the function
+
+; EXAMPLE
+
 (above (bulb "red")
        (bulb "green")
        (bulb "yellow"))
 
+; Points to remember :
+;	1. Arguments must be expressions (including function cals)
+;	2. Arguments are called `operands`
+; RULES TO EVALUATE FUNCTION CALLS :
+;	1. Reduce operands to values
+;	2. Replace function calls are replaced by the body of the function and
+;	   each occurence of params is replaceed by the corresponding args value.
+
 ; Don't Repeat Yourself, use functions !!
+
+
 ``````
 
 
 
+#### Booleans and If Expressions
 
+
+
+Boolean values represent the answer to `predicates` or `true-false`questions.
+
+`Note: Predicates are primitives or functions that produce a boolean value.   `
 
