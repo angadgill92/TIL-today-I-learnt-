@@ -17,8 +17,6 @@ An expression is anyting that evaluates to a value.
 
 
 
-
-
 #### Evaluation Rules in Racket
 
 ##### The Primitive Call Rule :
@@ -27,9 +25,9 @@ Expressions are evaluated Left -> Right and from the inside out i.e.
 
 1.  All operands are reduced to values first, then
 
-2. The primitive (operator) is applied to the reduced values.
+2.  The primitive (operator) is applied to the reduced values.
 
-   Consider the following : 
+    Consider the following : 
 
 ``````lisp
 (+ 2 (* 3 4) (- (+ 1 2) 3))
