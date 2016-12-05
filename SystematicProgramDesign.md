@@ -106,3 +106,62 @@ Strings are wrapped in `"___" `  double-quotes. We can call string primitives (m
 ; takes a string as the first argument, size as the second, and colour as the third.
 ``````
 
+
+
+#### Constant Definitions
+
+We define constants to be used later in the program, constant values cannot be changed later.
+
+``````lisp
+; SYNTAX
+
+(define ConstantName value)
+; We use the define keyword followed by the constant (Which can include upper and lower.
+; case letters and numbers as well (no parens or quotes though) followed by the value.
+
+; EXAMPLE
+
+(define Width 50)
+(define Height 70)
+
+(+ Width Height)
+; => 120
+
+; Values can be strings, numbers or even images!
+``````
+
+
+
+#### Function Definitions
+
+Function definitions are basically `constants` that hold a function body and parameters.
+
+###### Why use functions ?
+
+Functions are used to avoid redundancy in writing code. If you're writing the same lines of code with just a few things changing, to get similar outputs in your program, (basically if it is a set pattern of operations giving the same result), you should consider making a function out of those lines of code. **Break Code Into Small Functions**. 
+
+When using these, we `call`  these functions and `pass` certain `arguments` as the `parameters`.
+
+
+
+``````lisp
+;SYNTAX
+
+(define (func_name param1 param2 ...)(
+     func_body ))
+
+;EXAMPLE
+
+(define (bulb color)
+  (circle 40 "solid" c))
+(above (bulb "red")
+       (bulb "green")
+       (bulb "yellow"))
+
+; Don't Repeat Yourself, use functions !!
+``````
+
+
+
+
+
