@@ -188,7 +188,69 @@ When using these, we `call`  these functions and `pass` certain `arguments` as t
 
 
 
+###### Booleans
+
 Boolean values represent the answer to `predicates` or `true-false`questions.
 
 `Note: Predicates are primitives or functions that produce a boolean value.   `
+
+``````lisp
+;EXAMPLES OF PREDICATES
+
+(< 2 3)
+; is 2 less than 3 (predicate)
+; => true
+
+(define WIDTH 100)
+(define HEIGHT 200)
+
+(>= WIDTH HEIGHT )
+; is WIDTH greater than or equal to HEIGHT
+; => true
+
+(require 2htdp/image)
+
+(define C1 (circle 20 "solid"))
+(define C2 (circle 30 "solid"))
+
+(> (image-width C1)
+   (image-width C2))
+; is width of C1 greater than that of C2
+; => false
+``````
+
+
+
+###### If Expressions
+
+`if` expressions help us do different things depending upon whether the predicate produces `true` or `false`.
+
+``````lisp
+; SYNTAX
+(if (predicate)
+    (then expression)
+    (else expression))
+
+; The predicate is called the 'Question Expression'
+; The 'then' is called the 'True Answer'
+; The 'else' is called the 'False Answer'
+
+; EXAMPLE
+
+(if (< 2 3) 							; ->	Question Expression
+    "That's right!"						; ->    True Answer
+    "Surely, you must be joking!")		; ->  	False Answer
+; => "That's right!"
+
+
+; RULES FOR EVALUATING IF EXPRESSIONS :
+;	1. Evaluate the question expression to a value if it's not already.
+;	2. If it evaluates to true, replace the entire expression with the true answer 
+;	   expression, else replace it with the false answer expression.
+;	3. If the question expression does not evaluate to either true or false
+;	   give an error.
+
+; There are also logical 'and', 'or' and 'not' expressions.
+
+``````
 
