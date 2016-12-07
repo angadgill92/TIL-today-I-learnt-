@@ -27,7 +27,7 @@ Expressions are evaluated Left -> Right and from the inside out i.e.
 
 2.  The primitive (operator) is applied to the reduced values.
 
-    Consider the following : 
+     Consider the following : 
 
 ``````lisp
 (+ 2 (* 3 4) (- (+ 1 2) 3))
@@ -253,4 +253,109 @@ Boolean values represent the answer to `predicates` or `true-false`questions.
 ; There are also logical 'and', 'or' and 'not' expressions.
 
 ``````
+
+
+
+## Day 2
+
+
+
+### How to Design Functions - The Recipe.
+
+So here's the recipe to design functions :
+
+> 1. Signature, purpose and stub. 
+> 2. Define examples, wrap each in check-expect.
+> 3. Template and inventory.
+> 4. Code the function body.
+> 5. Test and debug.
+
+I will go along and elaborate on these as I go through the course.
+
+
+
+#### Parts of the recipe.
+
+##### Signature
+
+The signature of a function tells us what **`type` of data our function consumes** and what **`type` of data it returns** 
+
+```racket
+;; Type -> Type
+
+;; The part on the left of the arrow shows what type the function consumes, and that on
+;; the right shows the return type. 
+
+;; If the function takes multiple arguments, then we define a type on the left for each of
+;; those arguments.
+
+;; All type names start with a capital letter.
+
+;; EXAMPLE
+
+;; Number -> Number 
+;; (this function takes an argument of type Number and returns a Number)
+
+;; (Number, String) -> Boolean 
+;; (this function takes a Number and a String as arguments and returns a Boolean)
+```
+
+
+
+##### Purpose
+
+The purpose gives a short (one line) description of what the function produces with the value that it consumes.
+
+``````racket
+;; EXAMPLE - 1 
+;; Number -> Number [Signature]
+;; produces two times the number it consumes [Purpose]
+
+;; EXAMPLE - 2
+;; (Number, String) -> Boolean
+;; returns true if the given number equals the length of the given string, false otherwise
+``````
+
+
+
+##### Stub
+
+The stub is a function definition. It acts like a template/scaffolding using which we build our functions. We later comment it out, or even delete it when we've finished writing and testing the function.
+
+A standard stub must have the following properties :
+
+1. The same name as the function we intend to write.
+2. The correct number of parameters.
+3. Produces a dummy result of the same type.
+
+``````racket
+;; Number -> Number [Signature]
+;; produces two times the number it consumes [Purpose]
+;; (define (double n) 0) [Stub]
+
+;; Notice how the function takes a number and returns 0 which is also a number.
+;; This helps us keep the basic constraints in mind before we solve the problem.
+``````
+
+
+
+##### Examples and Checks
+
+Examples are used to demonstrate the behaviour of the function. It is always nice to provide multiple examples, but not too many.
+
+Wrapping the example function calls in a check-expect expression also makes them serve as `unit-tests`. We write them as follows : 
+
+``````racket
+;; Number -> Number [Signature]
+;; produces two times the number it consumes [Purpose]
+;; (define (double n) 0) [Stub]
+
+(check-expect (double 4) (* 2 4))  ;[this is a check-example]
+(check-expect (double 1.5) (* 2 1.5)) ;[so is this]
+
+``````
+
+
+
+
 
