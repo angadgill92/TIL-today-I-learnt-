@@ -278,7 +278,7 @@ I will go along and elaborate on these as I go through the course.
 
 ##### Signature
 
-The signature of a function tells us what **`type` of data our function consumes** and what **`type` of data it returns** 
+The signature of a function tells us what `type` of data our function consumes and what `type` of data it returns 
 
 ```racket
 ;; Type -> Type
@@ -331,7 +331,7 @@ A standard stub must have the following properties :
 ``````racket
 ;; Number -> Number [Signature]
 ;; produces two times the number it consumes [Purpose]
-;; (define (double n) 0) [Stub]
+(define (double n) 0) ; [Stub]
 
 ;; Notice how the function takes a number and returns 0 which is also a number.
 ;; This helps us keep the basic constraints in mind before we solve the problem.
@@ -348,14 +348,58 @@ Wrapping the example function calls in a check-expect expression also makes them
 ``````racket
 ;; Number -> Number [Signature]
 ;; produces two times the number it consumes [Purpose]
-;; (define (double n) 0) [Stub]
+(define (double n) 0) ; [Stub]
 
 (check-expect (double 4) (* 2 4))  ;[this is a check-example]
 (check-expect (double 1.5) (* 2 1.5)) ;[so is this]
 
+;; The check-expect calls will use the stub to run the tests at this stage. The stub helps
+;; us check if our tests are well-formed.
+;; Running the this code right now will result in both the tests failing, but both the 
+;; tests will run, which tells us that the stub and the tests are well formed.
 ``````
 
 
+
+##### Templates
+
+Templates tell us where the function body goes. We copy the template and paste it and then work on it to build our function. 
+
+`Note : After building the template, we comment out the Stub. Also, after building the entire function, we may comment out, or even delete the 'stub' and the 'template'. `
+
+```racket
+;; Number -> Number [Signature]
+;; produces two times the number it consumes [Purpose]
+;; (define (double n) 0) ; [Stub]
+
+(check-expect (double 4) (* 2 4))  ;[this is a check-example]
+(check-expect (double 1.5) (* 2 1.5)) ;[so is this]
+
+;; (define (double n ) [Template]
+;;   (... n))          [ the ellipsis (...) followed by 'n' indicate that the function
+;;						 works on the argument n] 
+```
+
+###### Finally the Function
+
+```racket
+;; Number -> Number [Signature]
+;; produces two times the number it consumes [Purpose]
+;; (define (double n) 0) ; [Stub]
+
+(check-expect (double 4) (* 2 4))  ;[this is a check-example]
+(check-expect (double 1.5) (* 2 1.5)) ;[so is this]
+
+;; (define (double n ) [Template]
+;;   (... n))          [ the ellipsis (...) followed by 'n' indicate that the function
+;;						 works on the argument n] 
+
+(define (double n)
+	(* 2 n))
+
+;; Note that sometimes expanding the expected values to operands helps us determine what
+;; to write in the body of the function.
+```
 
 
 
