@@ -406,3 +406,9 @@ Templates tell us where the function body goes. We copy the template and paste i
 
 
 
+> **A thing to keep in mind about testing in DrRacket**
+>
+> DrRacket highlights code that was never executed with a Black background and Orange font, or by simply changing the font color to Orange. This helps us while writing tests for our code, for example, if we're writing `check-expect` for a function that uses a conditional expression, and none of our tests leads to one of the conditions being evaluated, DrRacket highlights the unexecuted code to show us that it was not covered. 
+>
+> Using this code-coverage information, we can actually design complete and robust tests. So now we know what that weird highlighting does !  
+
