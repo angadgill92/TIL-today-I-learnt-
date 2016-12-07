@@ -348,10 +348,11 @@ Wrapping the example function calls in a check-expect expression also makes them
 ``````racket
 ;; Number -> Number [Signature]
 ;; produces two times the number it consumes [Purpose]
-(define (double n) 0) ; [Stub]
 
 (check-expect (double 4) (* 2 4))  ;[this is a check-example]
 (check-expect (double 1.5) (* 2 1.5)) ;[so is this]
+
+(define (double n) 0) ; [Stub]
 
 ;; The check-expect calls will use the stub to run the tests at this stage. The stub helps
 ;; us check if our tests are well-formed.
@@ -370,10 +371,11 @@ Templates tell us where the function body goes. We copy the template and paste i
 ```racket
 ;; Number -> Number [Signature]
 ;; produces two times the number it consumes [Purpose]
-;; (define (double n) 0) ; [Stub]
 
 (check-expect (double 4) (* 2 4))  ;[this is a check-example]
 (check-expect (double 1.5) (* 2 1.5)) ;[so is this]
+
+;; (define (double n) 0) ; [Stub]
 
 ;; (define (double n ) [Template]
 ;;   (... n))          [ the ellipsis (...) followed by 'n' indicate that the function
@@ -385,10 +387,11 @@ Templates tell us where the function body goes. We copy the template and paste i
 ```racket
 ;; Number -> Number [Signature]
 ;; produces two times the number it consumes [Purpose]
-;; (define (double n) 0) ; [Stub]
 
 (check-expect (double 4) (* 2 4))  ;[this is a check-example]
 (check-expect (double 1.5) (* 2 1.5)) ;[so is this]
+
+;; (define (double n) 0) ; [Stub]
 
 ;; (define (double n ) [Template]
 ;;   (... n))          [ the ellipsis (...) followed by 'n' indicate that the function
