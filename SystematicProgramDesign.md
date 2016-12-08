@@ -27,7 +27,7 @@ Expressions are evaluated Left -> Right and from the inside out i.e.
 
 2.  The primitive (operator) is applied to the reduced values.
 
-     Consider the following : 
+      Consider the following : 
 
 ``````lisp
 (+ 2 (* 3 4) (- (+ 1 2) 3))
@@ -418,4 +418,44 @@ Templates tell us where the function body goes. We copy the template and paste i
 > * If you think of some boundary-conditions which your code does not handle, write a test for the condition, then update the function body to address that. This may also include updating the type signature, purpose and stub etc. 
 
 
+
+## Day 3
+
+### How to Design Data Recipe
+
+#### `cond` Expressions
+
+**`cond`** is a multi-branched conditional, having any number of conditional cases at the same level.
+
+``````racket
+(require 2htdp/image)
+
+;; Image -> String
+;; produces a string defining the aspect ratio of the given image
+
+(check-expect (aspect-ratio (rectangle 20 30 "solid" "navy")) "tall")
+(check-expect (aspect-ratio (rectangle 20 20 "solid" "navy")) "square")
+(check-expect (aspect-ratio (rectangle 30 20 "solid" "navy")) "wide")
+
+
+;; (define (aspect-ratio img) "")       ;[Stub]
+;; (define (aspect-ratio img) (...img)) ;[Template] 
+
+#; 
+(define (aspect-ratio img)
+	(if (> (image-height img) (image-width img))
+	"tall"
+	(if (= (image-height img) (image-width img))
+		"square"
+		"wide")))
+	
+(define (aspect-ratio img)
+	(cond [(> (image-height img) (image-width img))   "tall"]
+		  [(= (image-height img) (image-width img)) "square"]
+		  [else "wide"]))
+
+;; The code with cond is convenient and more readable than the one with the if statements.
+``````
+
+`Note: All questions in a cond expression must evaluate to a Boolean value, except the last question expression, which can be just else.`
 
