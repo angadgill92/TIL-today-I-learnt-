@@ -606,3 +606,42 @@ Data defintions help us describe the following :
 
 `Note: This taken from the starter file which can be found here:`[source]([source](https://s3.amazonaws.com/edx-course-spdx-kiczales/next-color-starter.rkt))
 
+#### How to Design Data - The Recipe
+
+> 1. **Identify the structure of the information**.
+> 2. If the data is [compound]() you might want to write the **structure definition** first.
+> 3. This is followed by a **type comment**, which defines a new type and describes how to form data of that type.
+> 4. Then an **interpretation** that describes the correspondence between the infromation and the data.
+> 5. Follow all of this with one or more **examples** of the data.
+> 6. Lastly write a **template** for a single argument function operating on this data, just so people reading the code know how to use the data.
+
+
+
+#### Types of Data Definition
+
+Here's an example with steps:
+
+``````racket
+;; [Identifying the structure of the data]
+;;   ____________________________
+;; | INFORMATION  | DATA         |
+;; |-----------------------------|
+;; | Srinagar     | "Srinagar"   |
+;; |-----------------------------|
+;; | Bangalore    | "Bangalore"  |
+;; |_____________________________|
+
+
+;; CityName is String            [Type Comment]
+;; interp. the name of a city  [Interpretation]
+
+(define CN1 "Srinagar")   ;[Example Definition]
+(define CN2 "Bangalore")  ;[Example Definition]
+
+(define (fn-for-city-name cn) ;[Function Template to Use the Data Type, this depends on the type of data]
+  (...cn))
+
+;; Template rules used
+;; -> atomic non-distinct : String
+``````
+
