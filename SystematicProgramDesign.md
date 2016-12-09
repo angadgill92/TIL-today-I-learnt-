@@ -749,3 +749,31 @@ Itemizations are used to describe data which has atleast two subclasses where at
 
 ##### Itemization of Intervals
 
+If the itemization is comprised of 2 or more intervals. The functions operating on the data definition must be tested at all the boundaries of closed intervals and at points between the boundaries.
+
+Example:
+
+``````racket
+;;; Reading is one of:
+;;  - Number[> 30]      
+;;  - Number(5, 30]     
+;;  - Number[0, 5]      
+;; interp. distance in centimeters from bumper to obstacle
+;;    Number[> 30]    is considered "safe"
+;;    Number(5, 30]   is considered "warning"
+;;    Number[0, 5]    is considered "dangerous"
+(define R1 40)
+(define R2 .9)
+
+(define (fn-for-reading r)
+  (cond [(< 30 r) (... r)]
+        [(and (<  5 r) (<= r  30)) (... r)]
+        [(<= 0 r 5) (... r)]))
+
+;; Template rules used:
+;;  one-of: 3 cases
+;;  atomic non-distinct:  Number[>30]
+;;  atomic non-distinct:  Number(5, 30]
+;;  atomic non-distinct:  Number[0, 5]
+``````
+
