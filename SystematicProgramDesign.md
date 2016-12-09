@@ -658,7 +658,7 @@ Data which can not be broken down further, such as a name, or time. This is also
 
 #### Interval Data
 
-An interval is a range of data. The interval itself is atomic, even though it has multiple elements because everytime you need an operation done on an interval, you always take a single element out of it and work on that. For example :
+An interval is a range of data `Number`. The interval itself is atomic, even though it has multiple elements because everytime you need an operation done on an interval, you always take a single element out of it and work on that. For example :
 
 ```````racket
 ;; Countdown is Integer[0, 10]							[Type Comment]
@@ -678,3 +678,40 @@ An interval is a range of data. The interval itself is atomic, even though it ha
 
 `Note: '[ ]' square brackets mean that the first and last elements are included in the data, while '( )' parens mean that these boundary elements are excluded.`
 
+**Always check for boundary conditions as well as midpoints when writing tests for interval data.**
+
+
+
+#### Enumerations
+
+Enumerations are used when the information to be represented consists of a fixed number of *distinct* items. These distinct items are almost always represented as strings . Think of Enumerations like an inclusive (square bracket) interval of distinct `String` values. For example , colors of a traffic light, or cities in a state etc. Here's an example : 
+
+``````racket
+;; LightState is one of:
+;;  - "red"
+;;  - "yellow"
+;;  - "green"
+;; interp. the color of a traffic light
+
+;; <examples are redundant for enumerations>
+ 
+#;
+(define (fn-for-light-state ls)
+  (cond [(string=? "red" ls) (...)]
+        [(string=? "yellow" ls) (...)]
+        [(string=? "green" ls) (...)]))
+;; Template rules used:
+;;  - one of: 3 cases
+;;  - atomic distinct: "red"
+;;  - atomic distinct: "yellow"
+;;  - atomic distinct: "green"
+
+
+;; Note that since we have already listed the data, writing examples would be redundant.
+;; i.e. writing something like :
+;; (define RED "red")
+;; as an example of how to use this particular data is a waste of time and serves no
+;; purpose at all, even the interpretation is redundant !
+``````
+
+ 
