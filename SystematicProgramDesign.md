@@ -684,7 +684,7 @@ An interval is a range of data `Number`. For example :
 
 #### Enumerations
 
-Enumerations are used when the information to be represented consists of a fixed number of *distinct* items. These distinct items are almost always represented as strings . Think of Enumerations like an inclusive (square bracket) interval of distinct `String` values. For example , colors of a traffic light, or cities in a state etc. Here's an example : 
+Enumerations are used when the information to be represented consists of a fixed number of *distinct* items. These distinct items are almost always represented as strings. For example , colors of a traffic light, or cities in a state etc. Here's an example : 
 
 ``````racket
 ;; LightState is one of:
