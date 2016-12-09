@@ -716,3 +716,32 @@ Enumerations are used when the information to be represented consists of a fixed
 
 For large enumerations, we need not write the templates right away, we can defer writing templates till we actually need them. Even then we need only write the specific cases that our function requires in the `cond` expression, and remember to always hanlde other cases with an `else` case.
 
+
+
+#### Itemizations
+
+Itemizations are used to describe data which has atleast two subclasses where atleast one of the classes is non-distinct. For example, the following example shows that if there is no bird, the data will be `false` (which is distinct) or the position of the bird represented by a `Number` (which is non-distinct as it can be any number and not a particular number) : 
+
+``````racket
+;; Bird is one of:
+;;  - false
+;;  - Number
+;; interp. false means no bird, number is x position of bird
+
+(define B1 false)
+(define B2 3) 
+
+#;
+(define (fn-for-bird b)
+  (cond [(false? b) (...)]
+        [(number? b) (... b)]))
+;; Template rules used:
+;;  - one of: 2 cases
+;;  - atomic distinct: false
+;;  - atomic non-distinct: Number
+``````
+
+
+
+> Functions operating on itemizations should have at least as many tests as there are cases in the itemizations. If there are intervals in the itemization, then there should be tests at all points of variance in the interval. In the case of adjoining intervals it is critical to test the boundaries.
+
