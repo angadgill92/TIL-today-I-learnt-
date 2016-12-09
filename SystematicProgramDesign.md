@@ -617,38 +617,6 @@ Data defintions help us describe the following :
 
 
 
-#### Types of Data Definition
-
-Here's an example with steps:
-
-``````racket
-;; [Identifying the structure of the data]
-;;   ____________________________
-;; | INFORMATION  | DATA         |
-;; |-----------------------------|
-;; | Srinagar     | "Srinagar"   |
-;; |-----------------------------|
-;; | Bangalore    | "Bangalore"  |
-;; |_____________________________|
-
-
-;; CityName is String            [Type Comment]
-;; interp. the name of a city  [Interpretation]
-
-(define CN1 "Srinagar")   ;[Example Definition]
-(define CN2 "Bangalore")  ;[Example Definition]
-
-(define (fn-for-city-name cn) ;[Function Template to Use the Data Type, this depends on the type of data]
-  (...cn))
-
-;; Template rules used
-;; -> atomic non-distinct : String
-``````
-
-
-
-
-
 ## Day 4
 
 ### Data and Function Design Recipes are Orthogonal
@@ -674,12 +642,39 @@ Data which can not be broken down further, such as a name, or time. This is also
 (define MYNAME "Angad") ;    [Example]
 
 #;
-(define (fn-for-name n)      [Data Driven function Template]
+(define (fn-for-name n)   ;  [Data Driven function Template]
   (... n))
 
 ;; Template rules used:
 ;;  - atomic non-distinct: String
+
+;; Generally the template for Atomic data looks like this :
+;;
+;; (define (fn-for-data variable-name)  ;  [Data Driven Function Template]
+;;    (... variable-name))
 ``````
 
 
+
+#### Interval Data
+
+An interval is a range of data. The interval itself is atomic, even though it has multiple elements because everytime you need an operation done on an interval, you always take a single element out of it and work on that. For example :
+
+```````racket
+;; Countdown is Integer[0, 10]							[Type Comment]
+;; interp. the number of seconds remaining to liftoff	[Interpretation]
+(define C1 10)  ; start									
+(define C2 5)   ; middle							;	[Examples]
+(define C3 0)   ; end
+ 
+#;
+(define (fn-for-countdown cd)						;   [Data Driven Functional Template]
+  (... cd))
+
+;; Template rules used:
+;;  - atomic non-distinct: Integer[0, 10]
+
+```````
+
+`Note: '[ ]' square brackets mean that the first and last elements are included in the data, while '( )' parens mean that these boundary elements are excluded.`
 
