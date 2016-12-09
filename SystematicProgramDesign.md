@@ -658,7 +658,7 @@ Data which can not be broken down further, such as a name, or time. This is also
 
 #### Interval Data
 
-An interval is a range of data `Number`. The interval itself is atomic, even though it has multiple elements because everytime you need an operation done on an interval, you always take a single element out of it and work on that. For example :
+An interval is a range of data `Number`. For example :
 
 ```````racket
 ;; Countdown is Integer[0, 10]							[Type Comment]
@@ -744,4 +744,8 @@ Itemizations are used to describe data which has atleast two subclasses where at
 
 
 > Functions operating on itemizations should have at least as many tests as there are cases in the itemizations. If there are intervals in the itemization, then there should be tests at all points of variance in the interval. In the case of adjoining intervals it is critical to test the boundaries.
+
+
+
+##### Itemization of Intervals
 
