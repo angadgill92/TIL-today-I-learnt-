@@ -714,4 +714,5 @@ Enumerations are used when the information to be represented consists of a fixed
 ;; purpose at all, even the interpretation is redundant !
 ``````
 
- 
+For large enumerations, we need not write the templates right away, we can defer writing templates till we actually need them. Even then we need only write the specific cases that our function requires in the `cond` expression, and remember to always hanlde other cases with an `else` case.
+
