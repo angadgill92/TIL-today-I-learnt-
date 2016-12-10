@@ -687,7 +687,7 @@ An interval is a range of data `Number`. For example :
 Enumerations are used when the information to be represented consists of a fixed number of *distinct* items. These distinct items are almost always represented as strings. For example , colors of a traffic light, or cities in a state etc. Here's an example : 
 
 ``````racket
-;; LightState is one of:
+;; LightState is one of: [Type Comments in Enumeration Use the 'one of' keyword]
 ;;  - "red"
 ;;  - "yellow"
 ;;  - "green"
@@ -754,7 +754,7 @@ If the itemization is comprised of 2 or more intervals. The functions operating 
 Example:
 
 ``````racket
-;;; Reading is one of:
+;;; Reading is one of: 
 ;;  - Number[> 30]      
 ;;  - Number(5, 30]     
 ;;  - Number[0, 5]      
