@@ -834,4 +834,58 @@ When designing functions that consume interval type of data, make sure to write 
 
 
 
-#### 
+#### HtDF with Enumerations
+
+Functions that consume enumerations must have atleast as many tests as there are cases in th enumeration.
+
+``````racket
+; 
+; PROBLEM:
+; 
+; Using the LetterGrade data definition below design a function that
+; consumes a letter grade and produces the next highest letter grade. 
+; Call your function bump-up.
+; 
+
+
+
+;; Data definitions:
+
+;; LetterGrade is one of: 
+;;  - "A"
+;;  - "B"
+;;  - "C"
+;; interp. the letter grade in a course
+;; <examples are redundant for enumerations>
+#;
+(define (fn-for-letter-grade lg)
+  (cond [(string=? lg "A") (...)]
+        [(string=? lg "B") (...)]
+        [(string=? lg "C") (...)]))
+
+;; Template rules used:
+;;  one-of: 3 cases
+;;  atomic distinct: "A"
+;;  atomic distinct: "B"
+;;  atomic distinct: "C"
+
+
+;; Functions:
+
+;; LetterGrade -> LetterGrade                                 ; [Type Signature]
+;; produces the next highest letter grade (no change for A)   ; [Purpose]
+
+(check-expect (bump-up "A") "A")
+(check-expect (bump-up "B") "A")
+(check-expect (bump-up "C") "B")
+
+;;(define (bump-up lg) "A")                                   ; [Stub]
+;;<use template from LetterGrade>                             ; [Template]
+
+(define (bump-up lg)
+  (cond [(string=? lg "A") "A"]
+        [(string=? lg "B") "A"]
+        [(string=? lg "C") "B"]))
+``````
+
+ An important point that was mentioned in the course was that we should check that our function templates are error free and well formed. That is because, when we copy the template, we'd copy the errors as well, and if left undetected, they would cause trouble later, not to mention wastage of time.
