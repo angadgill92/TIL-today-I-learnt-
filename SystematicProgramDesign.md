@@ -972,3 +972,15 @@ At this point it is important to note that writing tests for our function also h
 
 
 
+### Structure is Beautiful !
+
+So till now, what I've gathered from the course and what has changed my way of thinking about a problem is to focus on the `structure` of the information of the problem domain first. 
+
+As said in the course, once we identify the structure of the information, we can identify the structure of the data required to represent it. That, in turn, gives us an idea about the template which the functions acting upon this data should follow. Ultimately, the structure of the templates then allows us to design tests and functions to act upon the data.
+
+​**Information**        :arrow_right:          **Data**            :arrow_right:                  **Template**                     :arrow_right:       **Tests**        :arrow_right:            **Function** 
+
+We can leverage the fact that the strucure of functions ultimately depends on the structure of the data.
+
+**The `structure` flows through and it's beautiful !**
+
