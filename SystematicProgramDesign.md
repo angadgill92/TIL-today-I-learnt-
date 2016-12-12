@@ -27,7 +27,7 @@ Expressions are evaluated Left -> Right and from the inside out i.e.
 
 2.  The primitive (operator) is applied to the reduced values.
 
-       Consider the following : 
+        Consider the following : 
 
 ``````lisp
 (+ 2 (* 3 4) (- (+ 1 2) 3))
@@ -777,3 +777,61 @@ Example:
 ;;  atomic non-distinct:  Number[0, 5]
 ``````
 
+
+
+## Day 5
+
+### How to Design Functions with Non-Primitive Data
+
+Today I'm learning about how to design functions that consume and act upon `non-primitive data`, which is also called `user-defined data`. We're going to start off with the Interval type, so here we go :
+
+#### HtDF with Interval
+
+When designing functions that consume interval type of data, make sure to write tests for the boundary cases and one or two cases in the middle. For Example :
+
+``````racket
+
+; 
+; PROBLEM:
+; 
+; Using the SeatNum data definition below design a function
+; that produces true if the given seat number is on the aisle. 
+; 
+
+
+;; Data definitions:
+
+;; SeatNum is Natural[1, 32]
+;; Interp. Seat numbers in a row, 1 and 32 are aisle seats
+(define SN1  1) ;aisle
+(define SN2 12) ;middle
+(define SN3 32) ;aisle
+#;
+(define (fn-for-seat-num sn)
+  (... sn)) 
+
+;; Template rules used:
+;;  atomic non-distinct: Natural[1, 32]
+
+
+;; Functions:
+
+;; SeatNum -> Boolean                          ;[Type Signature]
+;; produces true if SeatNum is an aisle seat   ;[Purpose]
+
+(check-expect (aisle-seat? SN1) true)
+(check-expect (aisle-seat? SN2) false)
+(check-expect (aisle-seat? SN3) true)
+
+;;(define (aisle-seat? s) false)               ; [Stub]
+;;<use template from SeatNum>
+
+(define (aisle-seat? sn)                       ; [Function Definition]
+  (or (= 1  sn)
+      (= 32 sn)))
+
+``````
+
+
+
+#### 
