@@ -27,7 +27,7 @@ Expressions are evaluated Left -> Right and from the inside out i.e.
 
 2.  The primitive (operator) is applied to the reduced values.
 
-        Consider the following : 
+         Consider the following : 
 
 ``````lisp
 (+ 2 (* 3 4) (- (+ 1 2) 3))
@@ -623,11 +623,12 @@ Data defintions help us describe the following :
 
 So, while going through the course yesterday, I found out that the way we design or model data is totally independent of the way we design functions. Only the function body depends on the type of data we're supposed to handle, but the way we think about the type signature, check-expects etc. does not rely on how  our data looks. 
 
-To explain what 'orthogonal' means here, I would like to draw an analogy. Remember high sschool physics and the chapter on waves ? If I remember correctly, electromagnetic waves (which includes light too) have two components, namely the 'magnetic field' and the 'electrical field' and both of these keep oscillating at an agle of 90 degrees to each other. What this essentially means is that they do not affect each other, yet are part of the same wave. 
+To explain what 'orthogonal' means here, I would like to draw an analogy. Remember high sschool physics and the chapter on waves ? If I remember correctly, electromagnetic waves have two components, namely the 'magnetic field' and the 'electrical field' and both of these keep oscillating at an agle of 90 degrees to each other. What this essentially means is that they do not affect each other, yet are part of the same wave. 
 
 Similarly, data design and function design are both parts of systematic program design, but are non-interfering  towards each other and independent.
 
-
+> **Note : The structure of the functions and tests does depend a little on the data type, especially when the data type is non-primitive, but the Data Design and Function Design still remain largely orthogonal.**
+>
 
 ### Types of Data
 
