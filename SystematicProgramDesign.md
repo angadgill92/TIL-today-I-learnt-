@@ -27,7 +27,7 @@ Expressions are evaluated Left -> Right and from the inside out i.e.
 
 2.  The primitive (operator) is applied to the reduced values.
 
-         Consider the following : 
+          Consider the following : 
 
 ``````lisp
 (+ 2 (* 3 4) (- (+ 1 2) 3))
@@ -1006,3 +1006,121 @@ So, racket comes with a (big-bang) expression, which takes three arguments :
 * Initial State of the World.
 * Expression to generate the Next State.
 * Expression to Render/ Reflect the changes.
+
+**So there are two parts to designing a world which we'll discuss now :**
+
+
+
+``````racket
+;; So we will be following along with the 'Cat-Walk' world design mentioned in SPD1.
+;; The aim of the program is to move a cat across the screen from one end to the other on key
+;; press.
+``````
+
+
+
+##### Domain Analysis
+
+Domain analysis requires us to pull out a pen and paper and analyse the information we have about the problem. It also has various steps of it's own :
+
+###### Sketching the Program Scenario
+
+This is much like identifying key frames in animation. You identify some points in the programs lifecycle which give you an idea of how the state of the program is changing. These `key states` must reflect the different stages in the program.
+
+``````racket
+;; The key states in this case would be :
+
+;; 1. When the cat is at the left edge of the screen.
+;; 2. When the cat is in the middle of the screen.
+;; 3. when the cat is at the right edge of the screen.
+``````
+
+
+
+###### Identifying the Constant information
+
+This involves identifying elements in your world that do not change. It can be boring but it is essential to identify constants in the your world.
+
+``````racket
+;; The Constants in the 'Cat-Walk' world would be :
+;; - The width of the screen.
+;; - The height of the screen.
+;; - The y-coordinate of the cat (fun fact here, the top left corner of the screen is 
+;;   considered the origin (0, 0) so as we go down the screen the y-coordinate increases).
+;; - The background scene MTS (e'M'p'T'y 'S'cene).
+;; - The image of the cat. (this is a little boring!).
+
+;; Remember that some constants might not be obvious the first time we analyse our domain,
+;; so we can always go back and add them to this list when we discover them. It's okay!
+``````
+
+
+
+###### Identifying the Changing Information
+
+This, obviously, involves identifying pieces of information in your world (Problem Domain), that change either with time or due to an event.
+
+``````racket
+;; In our case, the changing information is :
+;; - The x-coordinate of the Cat.
+``````
+
+
+
+###### The last step in Design Analysis - Identifying the Big Bang Options.
+
+Here we refer the `How to Design Worlds` recipe page, and go to table for the Big Bang options. From the table we can identify what our program needs e.g. Does it need to change state with time ? Does it need to display something ? Does it need to change on a Key Press ? Once we've identified what we require from the table, we list it and move on. 
+
+``````racket
+;; For our cat program we need 
+;; - on-tick (We need it because the program changes state with time - the cat moves).
+;; - to-draw (We need this to draw the various stages of movement of the cat on the screen).
+``````
+
+
+
+##### Building the actual Program
+
+Now that we have analysed  the problem, it's time to get to code. The `Design Recipes` page has a few templates for the world program that we can use.
+
+> **Opinion**
+>
+> I just realised that templates, though cumbersome for smaller programs, are actually a good way to go about programming. as the professor says in the video, a template does not  just provide placeholders to put your code into later, it actually helps you think about your program  in a gradual and logical manner. So, if you're feeling bored writing templates time and again, I'd recommend you keep going and don't give up. Once you realise the beauty of structured thinking, you're never going to go back. Trust me !
+
+
+
+``````racket
+;; Template rules for a program :
+
+;; The first line of a program should give us a short summary of the program. ----[Summary]
+;; -------------------------------------------------------------------------
+;; Next we must define the constants, these come directly from the Design     ----[Constants]
+;; Analysis part.
+
+;; Now we have Data Definitions that correspond to the 'changing' state of    ----[Variables]
+;; the program.
+
+;; After Data Definitions, we move on to Function Definitions                 ----[Functions]
+;; This has two parts, 1. The 'main' function.
+;;                     2. The 'wishlist' functions.
+
+;; Note : Mark your wishlist functions with a commented out '!!!' after  the
+;; purpose, this way you can find functions which are still pending and work
+;; on them.
+``````
+
+Once all of this is done, start working on the wishlist functions one by one until your program is done!
+
+
+
+> **New concepts : **
+>
+> * **Single Point of Control **
+>   If you can define some constants in terms of other  previously defined constants, do it!  This is a principle called 'Single Point of Control', i.e. you only need to change/update  one  constant  in order to update all the code that is dependent on it.
+> * **Traceability**
+>   Your program should be designed in such a way that it is easy to trace where each element from the design analysis phase ended up  in it.
+> * **Changeability**
+>   This concept is actually draws from the previous two. Any program that has users [think websites and applications etcetera] must be easy to change, in order for it to be easily upgradable.
+>
+> **"There's only two kinds of programs in the world - there's programs that change, and programs that nobody uses."**
+
