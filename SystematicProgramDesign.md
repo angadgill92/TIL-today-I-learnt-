@@ -985,3 +985,24 @@ We can leverage the fact that the strucure of functions ultimately depends on th
 
 **The `structure` flows through and it's beautiful !**
 
+
+
+## Day 6
+
+### How to Design Worlds Recipe
+
+Finally, I get to do some fun stuff in the course! Today we'll learn about how to design worlds using racket, and hopefully make some fun games and stuff :grinning:
+
+#### The Big Bang Mechanism
+
+The classical principle behind an interactive program is the the state of the program must change on a predetermined set of inputs by the user. (Exactly like in a Deterministic Finite Automaton).
+
+* Changing State.
+* Changing Display.
+* Keyboard and (or) mouse, affects prob=gram behaviour.
+
+So, racket comes with a (big-bang) expression, which takes three arguments :
+
+* Initial State of the World.
+* Expression to generate the Next State.
+* Expression to Render/ Reflect the changes.
