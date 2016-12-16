@@ -27,7 +27,7 @@ Expressions are evaluated Left -> Right and from the inside out i.e.
 
 2.  The primitive (operator) is applied to the reduced values.
 
-          Consider the following : 
+            Consider the following : 
 
 ``````lisp
 (+ 2 (* 3 4) (- (+ 1 2) 3))
@@ -1123,4 +1123,65 @@ Once all of this is done, start working on the wishlist functions one by one unt
 >   This concept is actually draws from the previous two. Any program that has users [think websites and applications etcetera] must be easy to change, in order for it to be easily upgradable.
 >
 > **"There's only two kinds of programs in the world - there's programs that change, and programs that nobody uses."**
+
+
+
+## Day 7
+
+### Compound Data
+
+Sometimes we need some information to be grouped together, for example, first name and last name of a person, or the x and y coordinates of an object etc.. This is usually information that belongs together inherently, that is, the pieces of information don't make sense on their own, but together they represent something. 
+
+Data which represents such information is called compound data. 
+
+#### The `define-struct` method
+
+In Racket (BSL), we use a method called `define-struct` to create structures (structures are like objects in JavaScript).
+
+``````racket
+;; Lets try defining a struct that stores the first and last name of a person :
+
+(define-struct person (first-name last-name))            ; [Structure Definition]
+
+;; The syntax is (define-struct <name-of-the-structure> (<fields in the structure>))
+;; This is much like defining a class in object oriented languages
+
+;; we then have a constructor called 'make-<name-of-the-struct>', here's how it's used :
+
+(define P1 (make-person "Ashok" "Kumar"))                ; [Constructors]
+(define P2 (make-person "Jane"    "Doe"))
+
+;; what we have done above is that we've created two new person structs :
+;; P1 with first-name : "Ashok", and last-name : "Kumar"
+;; p2 with first-name : "Jane",  and last-name : "Doe"
+
+;; Note that fields are stored using the `make-` method in the same order that they
+;; are defined in the structure definition.
+
+
+;; if we run P1 in drracket, we'd get (make-person "Ashok" "Kumar")
+
+;; After constructors we have something called selectors, these help us retrieve the
+;; values of particular fields in a struct.
+
+(person-first-name P1)   ; returns "Ashok"
+(person-last-name  P2)   ; returns "Doe"
+
+;; The syntax for selectors is (<struct-name>-<field-name> <name-of-the-instance>)
+
+;; Lastly we have the `predicate` which checks whether a given variable is an 
+;; instance of the same structure or not.
+
+(person? P1)             ; returns true, because P1 is an instance of the person struct
+(person? "Johnny")       ; returns false.
+
+;; The syntax for a `predicate` is (<struct-name>? <variable-to-be-checked>)
+
+``````
+
+Note : A structure definition defines :
+
+* The Constructor
+* The Selector(s)  [As many as there a fields in the structure]
+* The Predicate
 
