@@ -1185,3 +1185,30 @@ Note : A structure definition defines :
 * The Selector(s)  [As many as there a fields in the structure]
 * The Predicate
 
+#### Compound Data Definition
+
+``````racket
+(define-struct position (x y))                                          ; [Struct Definition]  
+
+;; position is (make-position Integer Integer)                          ; [Type Comment]
+
+;; interp. (make-position x y) is the Position (x,y coordinates)        ; [Interpretation]
+;; - x is the x coordinate
+;; - y is the y coordinate
+
+(define P1 (make-position 3 4))     ; (3, 4)
+(define P2 (make-position 4 9))     ; (4, 9)
+
+#;
+(define (fn-for-position p)                                             ; [Template]
+	(... (position-x p)             ; Integer
+	     (position-y p)))           ; Integer
+
+;; Note that in the template-function's body, we write something corresponding
+;; to each field in the structure.
+
+;; Template rules used :                                                ; [Template Rules]
+;; - Compound: 2 fields
+
+``````
+
