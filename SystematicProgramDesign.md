@@ -58,6 +58,7 @@ Strings are wrapped in `"___" `  double-quotes. We can call string primitives (m
 ```lisp
 "Angad"
 ; This string has the value 'Angad' which is my first name.
+
 "Gill"
 ; Similarly this string has the value 'Gill', which is my last name.
 
@@ -66,7 +67,7 @@ Strings are wrapped in `"___" `  double-quotes. We can call string primitives (m
 ; => this returns "Angad Gill"
 ```
 
-`Note : Strings and Numbers are different,so doing (+ 1 "23") will result in an error. `
+`Note : Strings and Numbers are different, so doing (+ 1 "23") will result in an error. `
 
 ###### Some String Primitives
 
@@ -312,7 +313,7 @@ The purpose gives a short (one line) description of what the function produces w
 ;; produces two times the number it consumes [Purpose]
 
 ;; EXAMPLE - 2
-;; (Number, String) -> Boolean
+;; Number String -> Boolean
 ;; returns true if the given number equals the length of the given string, false otherwise
 ``````
 
@@ -471,7 +472,7 @@ Templates tell us where the function body goes. We copy the template and paste i
 >
 > A program does not have information, it has data. We use data to *represent* these pieces of information in the problem domain.
 >
->  This data, in turn, should be defined in such a way, that it can be *interpreted* as the pieces of information from the problem domain that it was supposed to represent.
+> This data, in turn, should be defined in such a way, that it can be *interpreted* as the pieces of information from the problem domain that it was supposed to represent.
 >
 > That is where data definitions come into the picture.
 
