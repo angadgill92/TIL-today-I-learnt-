@@ -27,7 +27,7 @@ Expressions are evaluated Left -> Right and from the inside out i.e.
 
 2.  The primitive (operator) is applied to the reduced values.
 
-            Consider the following : 
+             Consider the following : 
 
 ``````lisp
 (+ 2 (* 3 4) (- (+ 1 2) 3))
@@ -1212,4 +1212,10 @@ Note : A structure definition defines :
 ;; - Compound: 2 fields
 
 ``````
+
+
+
+## Day 8
+
+### How to Design Worlds with Compound Data
 
